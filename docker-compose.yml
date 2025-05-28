@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+  mongo:
+    image: mongo:6.0
+    container_name: namneeds_mongo
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    ports:
+      - "27017:27017"
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: namneeds_backend
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/namneedstodo
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    # optional: mount for hot-reload
+    # volumes:
+    #   - ./backend:/usr/src/app
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: namneeds_frontend
+    depends_on:
+      - backend
+    # if your React app needs to know the API URL at runtime,
+    # you can bake it into the build or serve via relative paths + nginx proxy.
+    ports:
+      - "5173:80"
+
+volumes:
+  mongo-data:

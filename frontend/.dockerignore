@@ -1,0 +1,23 @@
+# node deps & build output
+node_modules
+dist
+build
+
+# logs & caches
+npm-debug.log*
+yarn-debug.log*
+.cache
+.vite
+
+# env & local
+.env
+.env.* 
+
+# Git & system
+.git
+.gitignore
+.DS_Store
+.vscode
+
+# test coverage
+coverage

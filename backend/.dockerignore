@@ -1,0 +1,21 @@
+# node deps & build artifacts
+node_modules
+dist
+build
+
+# logs & debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env & local configs
+.env
+.env.* 
+
+# Git & system
+.git
+.gitignore
+.DS_Store
+
+# test coverage
+coverage
