@@ -46,7 +46,7 @@ git clone https://github.com/namneyugn21/NamNeedsTODO.git
 
 cd NamNeedsTODO
 
-docker-compose up --build
+docker compose up --build
 ```
 Then open:
 - Frontend: http://localhost:5173
