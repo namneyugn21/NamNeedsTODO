@@ -18,7 +18,7 @@ services:
     depends_on:
       - mongo
     environment:
-      - MONGO_URI=mongodb://mongo:27017/namneedstodo
+      - MONGO_URI=mongodb://mongo:27017/todos
       - PORT=3000
     ports:
       - "3000:3000"
