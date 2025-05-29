@@ -12,7 +12,7 @@ RUN npm ci --omit=dev
 COPY . .
 
 # tell your app where Mongo is
-ENV MONGO_URI="mongodb://mongo:27017/namneedstodo"
+ENV MONGO_URI="mongodb://mongo:27017/todos"
 ENV PORT=3000
 
 EXPOSE 3000
