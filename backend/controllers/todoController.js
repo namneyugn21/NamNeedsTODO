@@ -1,15 +1,15 @@
 const Todo = require('../models/Todo');
 
-exports.getAllTodos = async (req, res) => {
+exports.getAllTodos = async (req, res, next) => {
   try {
     const todos = await Todo.find();
     res.status(200).json(todos);
   } catch (error) {
-    res.status(500).json({ message: 'Error fetching todos', error });
+    next(error); // pass the error to the next middleware (error handler)
   }
 }
 
-exports.createTodo = async (req, res) => {
+exports.createTodo = async (req, res, next) => {
   const { title, description } = req.body;
   const newTodo = new Todo({ title, description }); // Create a new Todo instance
 
@@ -17,11 +17,11 @@ exports.createTodo = async (req, res) => {
     await newTodo.save(); // Save the new todo to the database
     res.status(201).json(newTodo);
   } catch (error) {
-    res.status(500).json({ message: 'Error creating todo', error });
+    next(error); // pass the error to the next middleware (error handler)
   }
 }
 
-exports.updateTodo = async (req, res) => {
+exports.updateTodo = async (req, res, next) => {
   const { id } = req.params;
   const { completed } = req.body;
 
@@ -32,15 +32,15 @@ exports.updateTodo = async (req, res) => {
     }
     res.status(200).json({ message: 'Todo updated successfully' });
   } catch (error) {
-    res.status(500).json({ message: 'Error update todo status', error })
+    next(error); // pass the error to the next middleware (error handler)
   }
 }
 
-exports.clearTodo = async (req, res) => {
+exports.clearTodo = async (req, res, next) => {
   try {
     await Todo.deleteMany({ completed: true });
     return res.status(200).json({ message: 'Successfully clearing all completed todos!'});
   } catch (error) {
-    res.status(500).json({ message: 'Error clearing todos status', error })
+    next(error); // pass the error to the next middleware (error handler)
   }
 }
