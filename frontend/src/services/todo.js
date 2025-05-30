@@ -38,7 +38,7 @@ export const updateTodo = async (id, completed) => {
   }
 };
 
-// clear a completed to do
+// clear completed todos
 export const clearTodo = async () => {
   try {
     const response = await api.delete(`/`);

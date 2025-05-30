@@ -1,26 +1,9 @@
 import React from 'react';
-import { clearTodo, updateTodo } from '../services/todo';
+import { clearTodo } from '../services/todo';
+import TaskCard from './TaskCard';
 
 const Dashboard = ({ todos, setTodos }) => {
   const completedTodos = todos.filter(todo => todo.completed);
-
-  const handleCheck = async (id) => {
-    try {
-      // Toggle the completion on backend
-      const current = todos.find(todo => todo._id === id);
-      const response = await updateTodo(id, !current.completed);
-
-      if (response.status === 200) {
-        // Update local state
-        const updatedTodos = todos.map((todo) =>
-          todo._id === id ? { ...todo, completed: !todo.completed } : todo
-        );
-        setTodos(updatedTodos);
-      }
-    } catch (error) {
-      console.error("Error updating todo:", error);
-    }
-  };
 
   const handleClear = async () => {
     try {
@@ -56,25 +39,16 @@ const Dashboard = ({ todos, setTodos }) => {
         </div>
       ) : (
         todos.map((todo) => (
-          <div
+          <TaskCard 
             key={todo._id}
-            className="flex flex-col justify-center items-center bg-[#edf2fb] rounded-xl p-2 mb-3"
-          >
-            <div className="flex items-start bg-white rounded-lg shadow-sm border border-gray-200 px-4 py-3 w-full transition duration-300 hover:shadow-md">
-              <input
-                type="checkbox"
-                checked={todo.completed}
-                onChange={() => handleCheck(todo._id)}
-                className="mt-1 mr-4 cursor-pointer accent-blue-500 h-4 w-4"
-              />
-              <div className="flex flex-col">
-                <span className={`text-sm font-semibold ${todo.completed ? 'line-through text-gray-400' : 'text-gray-800'}`}>
-                  {todo.title}
-                </span>
-                <span className="text-sm text-gray-500">{todo.description}</span>
-              </div>
-            </div>
-          </div>
+            id={todo._id}
+            title={todo.title}
+            description={todo.description}
+            completed={todo.completed}
+            createdAt={todo.createdAt}
+            todos={todos}
+            setTodos={setTodos}
+          />
         ))
       )}
     </div>
