@@ -26,7 +26,7 @@
 
 ---
 
-![image](./frontend/src/assets/image.png)
+![image](./frontend/src/assets/demo.gif)
 
 ---
 
