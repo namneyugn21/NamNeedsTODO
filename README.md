@@ -48,7 +48,7 @@ cd NamNeedsTODO
 
 docker compose up --build
 ```
-Then open:
+Then you can open the following port:
 - Frontend: http://localhost:5173
 - Backend API: http://localhost:3000/todos
 - MongoDB is handled automatically inside Docker (no setup needed!)
