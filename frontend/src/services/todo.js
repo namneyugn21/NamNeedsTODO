@@ -20,7 +20,7 @@ export const getAllTodos = async () => {
 export const createTodo = async (todoData) => {
   try {
     const response = await api.post('/', todoData);
-    return response.data; // newly created todo
+    return response; // newly created todo
   } catch (error) {
     console.error('Error creating todo:', error);
     throw error;
@@ -48,3 +48,14 @@ export const clearTodo = async () => {
     throw error;
   }
 };
+
+// delete a todo task
+export const deleteTodo = async (id) => {
+  try {
+    const response = await api.delete(`/${id}`)
+    return response;
+  } catch (error) {
+    console.error(`Error deleting todo:`, error);
+    throw error;
+  }
+}

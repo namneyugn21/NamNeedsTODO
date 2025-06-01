@@ -44,3 +44,14 @@ exports.clearTodo = async (req, res, next) => {
     next(error); // pass the error to the next middleware (error handler)
   }
 }
+
+exports.deleteTodo = async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    await Todo.deleteOne({ _id: id });
+    return res.status(204).end();
+  } catch (error) {
+    next(error);
+  }
+}
