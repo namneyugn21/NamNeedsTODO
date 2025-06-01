@@ -19,19 +19,20 @@ const Dashboard = ({ todos, setTodos }) => {
 
   return (
     <div className="w-full max-w-[310px]">
-      <div className="text-right pr-2 text-[#778da9] mb-2">
+      <div className="text-right pr-2 text-[#5d6f6c] mb-2">
         <span className="text-sm pr-1">{completedTodos.length} Completed •</span>
         <span
           onClick={completedTodos.length === 0 ? undefined : handleClear}
-          className={`relative text-sm after:absolute after:left-0 after:bottom-0 after:h-[1px] after:w-0 after:bg-current after:transition-all after:duration-200 ${
+          className={`relative text-sm after:absolute after:left-0 after:bottom-0 after:h-[1px] after:w-0 after:bg-current after:transition-all after:duration-300 after:ease-in-out ${
             completedTodos.length === 0
-              ? 'text-[#778da981] cursor-not-allowed pointer-events-none'
-              : 'cursor-pointer hover:after:w-full'
+              ? 'text-[#5d6f6c50] cursor-not-allowed pointer-events-none'
+              : 'cursor-pointer hover:after:w-full hover:text-[#3e4c49]'
           }`}
         >
           Clear
         </span>
       </div>
+
 
       {todos.length === 0 ? (
         <div className="flex flex-col justify-center items-center bg-[#edf2fb] rounded-xl p-2 mb-3">

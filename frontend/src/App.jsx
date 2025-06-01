@@ -23,7 +23,7 @@ function App() {
   }, [])
 
   return (
-    <div className='flex flex-col justify-center items-center min-h-screen'>
+    <div className='flex flex-col justify-center items-center min-h-screen bg-[url(./assets/background.jpg)]'>
       <CreateButton onClick={toggleForm} />
       <h1 className='text-2xl mb-5'>nam needs to do something :)</h1>
       <Dashboard todos={todos} setTodos={setTodos} /> 

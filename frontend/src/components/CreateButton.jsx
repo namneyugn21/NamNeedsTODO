@@ -6,7 +6,7 @@ const CreateButton = ({ onClick }) => {
   return (
     <button
       onClick={onClick}
-      className='fixed top-5 right-5 bg-[#81a6ff] text-white rounded-full px-5 py-3 shadow-lg hover:bg-[#6a96fc] transition-colors duration-300 cursor-pointer z-50'>
+      className='fixed top-5 right-5 bg-[rgb(138,158,160)] text-white rounded-full px-5 py-3 shadow-lg hover:bg-[rgb(120,138,139)] transition-colors duration-300 cursor-pointer z-50'>
       <FontAwesomeIcon icon={faPlus} size='xl' />    
     </button>
   )
